@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" th:replace="~{base::layout(~{::section})}">
+<head>
+<meta charset="UTF-8">
+<title></title>
+</head>
+<body>
+
+
+<section>
+<div class="login-form shadow-lg mb-5 bg-body">
+<form th:action="@{/domemberlogin}" method="post">
+<div class="text-center fs-3 fw-bolder mb-3">Login as Restaurant-Owner</div>
+ <div class="mb-3">
+    <label for="userName" class="form-label">Username:</label>
+    <input type="text" class="form-control input-bar" id="username" name="username" placeholder="Enter username">
+  </div> 
+  <div class="mb-5">
+    <label for="password" class="form-label">Password:</label>
+    <input type="password" class="form-control input-bar" id="password" name="password" placeholder="Enter password">
+  </div>
+  <div class="text-center">
+  <button type="submit" class="btn btn-success ps-5 pe-5">Submit</button>
+  </div>
+   
+</form>
+
+</div>
+
+  <script>
+        
+        $(document).ready(()=>{
+        	 $(".home-links").removeClass("active");
+        	 $("#login-member").addClass("active");
+        })
+        
+        
+  </script>
+
+</section>
+
+
+
+
+
+
+</body>
+</html>

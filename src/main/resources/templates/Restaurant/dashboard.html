@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" th:replace="~{Restaurant/Base::layout(~{::section})}">
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+<section>
+
+
+<div class="wrapper">
+<div class="text-center">
+<h1 th:text="${Restaurant.name}"></h1>
+</div>
+<div class="text-center">
+<img src="" th:src="@{'/img/'+${Restaurant.image}}" class="rest_img">
+</div>
+<div class="card my-5">
+<div class="card-body">
+
+
+ <div class="container">
+       <h5 class="mt-2">Restaurant</h5>
+        <div class="row mt-5">
+            <h6 class="col-4">Owner</h6>
+            <h6 class="col-1">-</h6>
+            <div class="col" th:text="${member.name}"></div>
+        </div>
+        
+         <div class="row mt-2">
+            <h6 class="col-4">Restaurant Name</h6>
+            <h6 class="col-1">-</h6>
+            <div class="col" th:text="${Restaurant.name}"></div>
+        </div>
+        
+        
+        <div class="row mt-2">
+            <h6 class="col-4">Opening Hours</h6>
+            <h6 class="col-1">-</h6>
+            <div class="col" th:text="${Restaurant.openingHours}"></div>
+        </div>
+        
+        <div class="row mt-2">
+            <h6 class="col-4">Registration Date</h6>
+            <h6 class="col-1">-</h6>
+            <div class="col" th:text="${Restaurant.registrationDate}"></div>
+        </div>
+        
+        
+       <h5 class="my-5">Address</h5>
+         <div class="row mt-2">
+            <h6 class="col-4">Country</h6>
+            <h6 class="col-1">-</h6>
+            <div class="col" th:text="${Restaurant.address.country}"></div>
+        </div>
+        
+         <div class="row mt-2">
+            <h6 class="col-4">City</h6>
+            <h6 class="col-1">-</h6>
+            <div class="col" th:text="${Restaurant.address.city}"></div>
+        </div>
+        
+         <div class="row mt-2">
+            <h6 class="col-4">Postal Code</h6>
+            <h6 class="col-1">-</h6>
+            <div class="col" th:text="${Restaurant.address.postalCode}"></div>
+        </div>
+        
+         <div class="row mt-2">
+            <h6 class="col-4">street Address</h6>
+            <h6 class="col-1">-</h6>
+            <div class="col" th:text="${Restaurant.address.streetAddress}"></div>
+        </div> 
+        
+         <h5 class="my-5">Contact</h5>
+          <div class="row mt-2">
+            <h6 class="col-4">Email</h6>
+            <h6 class="col-1">-</h6>
+            <div class="col" th:text="${Restaurant.email}"></div>
+        </div>
+        
+         <div class="row mt-2">
+            <h6 class="col-4">Mobile</h6>
+            <h6 class="col-1">-</h6>
+            <div class="col" th:text="${Restaurant.mobile}"></div>
+        </div>
+        
+   </div>
+
+</div>
+</div>
+</div>
+</section>
+</body>
+</html>

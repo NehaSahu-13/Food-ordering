@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" th:replace="~{Restaurant/Base::layout(~{::section})}">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Update Form</title>
+</head>
+<body>
+<section>
+ 
+<div class="wrapper update-form">
+ 
+    <div class="text-center">
+    <div th:if="${session.message}" th:classappend="${session.message.type}" class="alert " role="alert">
+                   <p class="text-center" th:text="${session.message.content}"></p>
+                   <th:block th:text="${@sessionHelper.removeMessageFromSession()}"></th:block>
+              </div>
+     <i class="fa-solid fa-pencil"></i>
+    <span class="fs-5 fw-bold">Edit Restaurant</span>
+    </div>
+    
+    <form class="mt-4"
+     enctype="multipart/form-data"  action=""
+       method="post" th:action="@{/member/restaurant/process-update-Restaurant}" th:object="${restaurant}">
+       
+        <input type="hidden" th:value="${restaurant.id}" name="id"/>
+   
+   
+  <div class="mb-3">
+    <label for="name" class="form-label">Name </label>
+    <input required type="text" class="form-control input-bar" id="name" th:value="${restaurant.name}" name="name">
+  </div>
+  
+  <div class="mb-3">
+    <label for="desc" class="form-label">Description </label>
+    <input type="text" required  class="form-control input-bar" id="desc" th:value="${restaurant.description}"  name="description">
+  </div>
+  
+  
+    <div class="custom-file my-4">
+          <label for="image" class="form-label">Add New Image :  </label>
+         <input type="file" name="RestaurantImage"/>
+    </div>
+                          
+   <div class="mb-3">
+    <label for="timing" class="form-label">Opening Hours  </label>
+    <input type="text" required class="form-control input-bar" id="timing" th:value="${restaurant.openingHours}"  name="openingHours">
+  </div>
+ 
+  <div class="mb-3">
+    <label for="street" class="form-label">Street Address  </label>
+    <input type="text" required class="form-control input-bar" id="street" th:value="${address.streetAddress}"  name="streetAddress">
+  </div>
+  
+   <div class="mb-3 gap-4">
+    <label for="city" class="form-label mt-3">City </label>
+    <input type="text" required class="form-control input-bar" id="city" th:value="${address.city}"  name="city">
+     <label for="stateprovince" class="form-label  mt-3">stateProvince </label>
+    <input type="text" required class="form-control input-bar" id="stateprovince" th:value="${address.stateProvince}"  name="stateProvince">
+     <label for="postalcode" class="form-label  mt-1">Postal Code</label>
+    <input type="number" required class="form-control input-bar" id="postalcode" th:value="${address.postalCode}"  name="postalCode">  
+  </div>
+  
+   <div class="mb-3">
+    <label for="country" class="form-label">Country  </label>
+    <input type="text" required class="form-control input-bar" id="country" th:value="${address.country}"  name="country">
+  </div>
+      
+      
+  <div class="mb-3">
+    <label for="exampleInputEmail1" class="form-label mt-3">Email </label>
+    <input type="email" required class="form-control input-bar" id="exampleInputEmail1" th:value="${restaurant.email}"  name="email">
+     <label for="mobile" class="form-label  mt-3">Mobile</label>
+    <input type="number" required class="form-control input-bar" id="mobile" th:value="${restaurant.mobile}"  name="mobile" pattern=”[0-9]{10}” >    
+  </div>
+
+
+  <div class="text-center">
+  <button type="submit" class="btn-success px-3 py-2 my-5">Update Restaurant</button>
+  </div>
+  
+  
+</form>
+     
+     </div>
+         
+     
+       <script>
+        
+        $(document).ready(()=>{
+        	 $('.item').removeClass('active');
+        	 $("#res_details").addClass("active");
+        })
+        
+        
+        </script>
+     
+     
+</section>
+
+
+</body>
+</html>

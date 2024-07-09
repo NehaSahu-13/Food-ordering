@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" th:replace="~{base::layout(~{::section})}">
+<head>
+<meta charset="UTF-8">
+<meta name="vewport" content="width=device-width, inirial-scale=1.0">
+<title></title>
+</head>
+<body>
+
+
+<section>
+<div class="login-form shadow-lg mb-5 bg-body">
+ <div th:if="${session.message}" th:classappend="${session.message.type}" class="alert mt-5" role="alert">
+                   <p class="text-center" th:text="${session.message.content}"></p>
+                   <th:block th:text="${@sessionHelper.removeMessageFromSession()}"></th:block>
+              </div>
+<form th:action="@{/douser_login}" method="post" class="">
+<div class="text-center fs-3 fw-bolder mb-5 login-circle">Login</div>
+ <div class="mb-3 mt-5">
+    <label for="userName" class="form-label">Username:</label>
+    <input type="text" class="form-control input-bar" id="username" name="username" placeholder="Enter username">
+  </div> 
+  <div class="mb-5">
+    <label for="password" class="form-label">Password:</label>
+    <input type="password" class="form-control input-bar" id="password" name="password" placeholder="Enter password">
+  </div>
+  <div class="text-center">
+  <button type="submit" class="btn btn-success ps-5 pe-5">Submit</button>
+  </div>
+   
+</form>
+
+</div>
+
+  <script>
+        
+        $(document).ready(()=>{
+        	 $(".home-links").removeClass("active");
+        	 $("#login").addClass("active");
+        })
+        
+         sessionStorage.removeItem('firstLoad');
+        
+  </script>
+
+</section>
+
+
+
+
+
+
+</body>
+</html>

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" th:replace="~{user/user-base::layout(~{::section})}">
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+<section>
+   <div class="card form-container">
+        <div class="card-body shadow p-3 bg-body rounded">
+             <form th:object="${address}" class="mx-5" method='post' th:action="@{/customer/process-order}">
+             <div class="text-center mb-4">
+             <h3>Delivery Address</h3>
+             </div>
+                <label for="streetAddress">Street Address</label>
+                <input required id="streetAddress" class="form-control input-bar mb-3" name="StreetAddress" th:value="${address.StreetAddress}"/>
+                <label for="city">City</label>
+                <input required id="city" class="form-control input-bar mb-3" name="city" th:value="${address.city}"/>
+                 <label for="stateProvince">State</label>
+                <input required id="stateProvince" class="form-control input-bar mb-3" name="stateProvince" th:value="${address.stateProvince}"/>
+                 <label for="postalCode">Postal Code</label>
+                <input required id="postalCode" class="form-control input-bar mb-3" name="postalCode" th:value="${address.postalCode}"/>
+                <label for="country">Country</label>
+                <input required id="country" class="form-control input-bar mb-3" name="country" th:value="${address.country}"/>
+                <div class="text-center mt-5">
+                    <button type="submit" class="btn btn-success  ps-5 pe-5">Order</button>
+                </div>
+             </form>
+        </div>
+   </div>
+</section>
+</body>
+</html>

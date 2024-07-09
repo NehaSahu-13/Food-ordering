@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" th:replace="~{Restaurant/Base::layout(~{::section})}">
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+<section>
+    
+    
+    <div class="wrapper table-card">
+    
+    <table class="table table-striped" th:if="${orders}">
+          
+          <thead>
+           <tr>
+             <th scope="col">Order ID</th>
+             <th scope="col">Image</th>
+             <th scope="col">Food Name</th>
+             <th scope="col">Quantity</th>
+             <th scope="col">Price</th>
+             <th scope="col">Delivery Address</th>
+             <th scope="col">Status</th>
+             <th scope="col">Action</th>
+           </tr>
+         </thead>
+         
+          <tbody>
+			    <tr th:each="o:${orders}">
+			      <th scope="row" th:text=${o.id}></th>
+			      <td><img th:src="'/img/'+${o.food.images}" alt="image" style="width:60px;height:60px"/></td>
+			      <td th:text="${o.food.name}"></td>
+			      <td th:text="${o.quantity}"></td>
+			      <td th:text="${o.totalPrice}"></td>
+			      <td>
+			          <span th:text="${o.deliveryAddress.streetAddress}"></span>
+			          <span th:text="', '+${o.deliveryAddress.city}"></span>
+			      </td>
+			      <td th:text="${o.orderStatus}"></td>
+			      <td>
+			       <form th:action="@{'/member/restaurant/change-orderstatus/'+${o.id}}" method="post">
+                      <select onchange="submitForm(this)" class="form-select" aria-label="Default select example" name="status">
+                      <option value="Food processing">Pending</option>
+  					   <option value="Food processing">Food processing</option>
+ 					   <option  value="Out for Delivery">Out for Delivery</option>
+					   <option value="Delivered">Delivered</option>
+					   <option value="Cancelled">Cancel</option>
+					</select> 
+					 
+                  </form>
+			      </td>
+			    </tr>
+		</tbody>
+         
+         
+         
+          
+    </table>
+    
+    
+    
+    <div th:if="${#lists.isEmpty(orders)}" class="text-center mt-5">
+       <h1 class=" fw-light" >No orders yet ....</h1> 
+    </div> 
+    
+    
+    </div>
+    
+      <script>
+      
+      function submitForm(selectElement) {
+          const form = selectElement.form;
+          form.submit();
+      }
+        $(document).ready(()=>{
+        	 $('.item').removeClass('active');
+        	 $("#res_order").addClass("active");
+        })
+        
+        
+        </script>
+        
+</section>
+</body>
+</html>

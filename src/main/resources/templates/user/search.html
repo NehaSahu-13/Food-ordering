@@ -1,0 +1,142 @@
+
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" th:replace="~{user/user-base::layout(~{::section})}">
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+<section>
+     
+  <div class="wrapper-search">
+ 
+ <!-- search bar --> 
+  
+  <div class="container-fluid">
+    <form class="d-flex searchbox" method="post" th:action="@{/customer/searchfood}">
+      <input class="form-control me-2 input-bar" type="text" placeholder="Search By Food" aria-label="Search" name="food">
+      <button class="btn btn-outline-success" type="submit">Search</button>
+    </form>
+  </div>
+
+
+<!--  Popular Cuisines-->
+ <div class="sub-container my-5">
+<h5 class="my-5 fw-bold">Popular Cuisines</h5>
+<div class="Popular-Cuisines d-flex gap-4">
+
+   <a href="" th:href="@{/customer/foodItem/Cake}" class="text-decoration-none link-food">
+   <div class="img-caption  d-flex align-items-center">
+  <img src="/img/cakes.jpeg" alt=""/>
+   <p class="text-nowrap">Cake</p>
+   </div>
+   </a>
+    <a href="" th:href="@{/customer/foodItem/Sandwich}" class="text-decoration-none link-food">
+   <div class="img-caption d-flex align-items-center">
+  <img src="/img/sandwhich.jpeg" alt=""/>
+   <p class="text-nowrap">Sandwich</p>
+   </div>
+   </a>
+   <a href="" th:href="@{/customer/foodItem/Pizza}" class="text-decoration-none link-food">
+     <div class="img-caption d-flex align-items-center">
+  <img src="/img/pizza.jpeg" alt=""/>
+   <p class="text-nowrap">Pizza</p>
+   </div>
+   </a>
+   <a href="" th:href="@{/customer/foodItem/Cold Drink}" class="text-decoration-none link-food">
+     <div class="img-caption d-flex align-items-center">
+  <img src="/img/colddrink.jpeg" alt=""/>
+   <p class="text-nowrap">Cold Drink</p>
+     </div>
+     </a>
+   <a href="" th:href="@{/customer/foodItem/Burger}" class="text-decoration-none link-food">
+   <div class="img-caption d-flex align-items-center">
+  <img src="/img/burger.jpeg" alt=""/>
+   <p class="text-nowrap">Burger</p>
+   </div>
+   </a>
+   <a href="" th:href="@{/customer/foodItem/Tea}" class="text-decoration-none link-food">
+    <div class="img-caption d-flex align-items-center">
+  <img src="/img/Tea.jpeg" alt=""/>
+   <p class="text-nowrap">Tea</p>
+     </div>
+     </a>
+     <a href="" th:href="@{/customer/foodItem/Dessert}" class="text-decoration-none link-food">
+     <div class="img-caption d-flex align-items-center">
+  <img src="/img/dessert.jpeg" alt=""/>
+   <p class="text-nowrap">Dessert</p>
+   </div>
+   </a>
+    <a href="" th:href="@{/customer/foodItem/Rolls}" class="text-decoration-none link-food">
+     <div class="img-caption d-flex align-items-center">
+  <img src="/img/rolls.jpeg" alt=""/>
+   <p class="text-nowrap">Rolls</p>
+   </div>
+   </a>
+   <a href="" th:href="@{/customer/foodItem/Ice Cream}" class="text-decoration-none link-food">
+   <div class="img-caption d-flex align-items-center">
+  <img src="/img/icecream.jpeg" alt=""/>
+   <p class="text-nowrap">Ice cream</p>
+   </div>
+   </a>
+   <a href="" th:href="@{/customer/foodItem/Biryani}" class="text-decoration-none link-food">
+    <div class="img-caption d-flex align-items-center">
+  <img src="/img/biryani.jpeg" alt=""/>
+   <p class="text-nowrap">Biryani</p>
+   </div>
+   </a>
+  
+
+</div> 
+</div> 
+
+ 
+ <hr class="my-5"></hr>
+ 
+   <div class="Restaurant-container my-5" th:if="${restaurants}">
+    
+    
+           
+           <div class="d-flex flex-row rest-container flex-wrap">
+           
+           
+           <div th:each="r:${restaurants}" class="card rest-card">
+           <a href="" class="text-decoration-none link-food cardborder" th:href="@{'/customer/restaurantdetail/'+${r.name}}">
+               <div class='card-body'>
+                   <img src="" th:src="'/img/'+${r.image}" class="rest-img"/>
+                   <h5 class="mt-2" th:text="${r.name}"></h5>
+                    <div th:text="${r.description}"></div>
+                    <div th:text="${r.address.StreetAddress}"></div>
+               </div>
+            </a>
+           </div>
+           
+           </div>
+           
+           
+           
+    
+       </div>
+       
+     <h3 class="p-5 mx-5 fw-light" style="height:200px" th:if="${result}">No Result found...</h3> 
+     
+   
+    </div>
+    
+    
+    
+     <script>
+        
+        $(document).ready(()=>{
+        	 $('.item').removeClass('active');
+        	 $("#search").addClass("active");
+        })
+        
+        
+        </script>
+    
+    </section>
+     
+    
+</body>
+</html>

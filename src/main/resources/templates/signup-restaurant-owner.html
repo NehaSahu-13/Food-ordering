@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" th:replace="~{base::layout(~{::section})}">
+<head>
+<meta charset="UTF-8">
+<title>SignUp-Restaurant</title>
+</head>
+<body>
+      <section>
+    <div class="wrapper">
+       <div class="row signup-form shadow-lg mb-5 bg-body">
+          <div class="">
+          
+          <div class="my-card mt-2">
+          
+          <div th:if="${session.message}" th:classappend="${session.message.type}" class="alert " role="alert">
+                   <p class="text-center" th:text="${session.message.content}"></p>
+                   <th:block th:text="${@sessionHelper.removeMessageFromSession()}"></th:block>
+              </div>
+       
+         
+						    
+          <h1 class="text-center fs-3 my-4">Sign up as Restaurant Owner</h1>
+          
+          
+          
+          <form  action="" th:action="@{/process-signup-restaurant-owner}" method="post" >
+              
+              <!-- name field  -->
+              
+      <div class="mb-3">
+          <label for="name_field" class="form-label">Name</label>
+          <input name="name" type="text" class="form-control input-bar" placeholder="Enter Name" required id="name_field">
+         
+  
+      <!--     <div class="invalid-feedback" th:each="e : ${#fields.errors('name')}" th:text="${e}">
+             
+          </div> -->
+      </div>
+              
+                     <!-- email field  -->
+              
+      <div class="mb-3">
+          <label for="email_field" class="form-label">Email</label>
+          <input name="email" type="email" class="form-control input-bar" placeholder="Enter Email" required id="email_field">
+      </div>
+       
+       
+       <div class="mb-3">
+          <label for="phone_field" class="form-label">Phone Number</label>
+          <input name="phonenumber" type="number"  pattern=”[0–9]{10}” class="form-control input-bar" placeholder="Enter phone number" required id="phone_field">
+      </div>
+                     <!-- password field  -->
+              
+      <div class="mb-3">
+          <label for="password_field" class="form-label">Password</label>
+          <input name="password" type="password" class="form-control input-bar" placeholder="Enter Password" required id="password_field">
+      </div>
+       
+    
+       
+       <div class="text-center my-4">
+       
+          <button type="submit" class="btn btn-danger ps-5 pe-5">
+            Submit
+          </button>
+          
+       </div>
+       
+       
+       
+          </form> 
+          
+          </div>
+          </div>
+          </div>
+       </div>
+         
+         
+    <script>
+        
+        $(document).ready(()=>{
+        	 $(".home-links").removeClass("active");
+        	 $("#sign-up").addClass("active");
+        })
+        
+        
+        </script>
+       
+    
+    </section>
+</body>
+</html>

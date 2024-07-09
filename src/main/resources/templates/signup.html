@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" th:replace="~{base::layout(~{::section})}">
+<head>
+<meta charset="UTF-8">
+<title>SignUp-Customer</title>
+
+</head>
+<body>
+     <section>
+    <div class="wrapper">
+       <div class="row signup-form shadow-lg mb-5 bg-body">
+          <div class="">
+          
+          <div class="my-card mt-2">
+						    
+              <div th:if="${session.message}" th:classappend="${session.message.type}" class="alert " role="alert">
+                   <p class="text-center" th:text="${session.message.content}"></p>
+                   <th:block th:text="${@sessionHelper.removeMessageFromSession()}"></th:block>
+              </div>
+              
+              
+						    
+						    
+          <h1 class="text-center login-box">Sign up</h1>
+          
+          
+          
+         
+          <form  action=""  th:action="@{/process-signup-customer}" method="post" style="padding-top:20px;">
+              
+              <!-- name field  -->
+              
+      <div class="mb-3">
+        <label for="name_field" class="form-label">Name</label>
+           <input required name="name" type="text" class="form-control input-bar" placeholder="Enter Name"  id="name_field">
+           
+          
+      </div> 
+              
+                    <!-- email field  -->
+              
+      <div class="mb-3">
+          <label for="email_field" class="form-label">Email</label>
+          <input required name="email" type="email" class="form-control input-bar" placeholder="Enter Email"  id="email_field">
+      </div>
+       
+                     <!-- password field  -->
+              
+      <div class="mb-3">
+          <label for="password_field" class="form-label">Password</label>
+          <input required name="password" type="password" class="form-control input-bar" placeholder="Enter Password"  id="password_field">
+      </div>
+      
+      <div class="mb-3">
+          <label for="tel_field" class="form-label">Mobile number</label>
+          <input required name="phonenumber" type="number" class="form-control input-bar" pattern=”[0-9]{10}” placeholder="Enter here"  id="tel_field">
+      </div> 
+      
+      
+      
+       <div class="mb-3">
+        <label for="city_field" class="form-label">City</label>
+           <input required name="userCity" type="text" class="form-control input-bar" placeholder="Enter Your City"  id="city_field">
+           
+         </div>
+       
+       
+       <div class="btn-ctn">
+       
+          <button type="submit" class="btn btn-success">
+            Submit
+          </button>
+          <a th:href="@{/signup-restaurant-owner}" class="btn btn-danger">Sign up as Restaurant Owner</a> 
+          
+       </div>
+       
+       
+       
+          </form> 
+          
+          </div>
+           </div>
+          </div>
+       </div>
+       
+        <script>
+        
+        $(document).ready(()=>{
+        	 $(".home-links").removeClass("active");
+        	 $("#sign-up").addClass("active");
+        })
+        
+        
+        </script>
+       
+    </section>
+</body>
+</html>

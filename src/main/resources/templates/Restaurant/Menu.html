@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" th:replace="~{Restaurant/Base::layout(~{::section})}">
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+<section>
+ 
+ <div class="wrapper">
+ <div class="card">
+ 
+     <div class="card-body">
+           
+           
+          <div class="d-flex justify-content-between">
+             <h4>All Menu Items</h4>
+               <a id="" href="#" class="link" th:href="@{/member/restaurant/addmenuform}"><img class="img-icons" src="/img/edit.png"/></i>Add New Menu</a>
+           </div>     
+               
+               
+ <div class="table-responsive">
+           
+<table class="table">                
+  <thead>
+    <tr>
+      <th scope="col">Image</th>
+      <th scope="col">Title</th>
+      <th scope="col">Price</th>
+      <th scope="col">Delete</th>
+    </tr>
+    
+  </thead>
+ 
+  <tbody>
+   
+    <tr  th:each="c:${foods}" class="row-border">
+    
+       <td class="no-border"><img th:src="@{'/img/'+${c.images}}" alt="image" class="food-img"/></td>
+       
+      <td class="no-border pt-4" th:text="${c.name}"></td>
+      
+      <td class="no-border pt-4" th:text="'Rs.'+${c.price}"></td>
+        
+      <td class="no-border pt-4"><a href="#" th:href="@{'/member/restaurant/deleteFoodItem/'+${c.id}}" class="link text-danger"><i class="fa-solid fa-trash"></i></a></td>
+              
+     
+    </tr>
+ 
+    
+  </tbody>
+</table>
+</div>
+               
+
+
+
+
+ 
+ </div>
+ </div>
+ </div>
+ 
+ 
+         <script>
+        
+        $(document).ready(()=>{
+        	 $('.item').removeClass('active');
+        	 $("#res_menu").addClass("active");
+        })
+        
+        
+        </script>
+ 
+ 
+ </section>
+</body>
+</html>

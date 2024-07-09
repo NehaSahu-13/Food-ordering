@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" th:replace="~{Restaurant/Base::layout(~{::section})}">
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+ <section>
+ 
+ <div class="wrapper">
+ <div class="card">
+ 
+     <div class="card-body">
+           
+           
+          <div class="d-flex justify-content-between">
+             <h4>Categories</h4>
+               <a id="" href="#" class="link" data-bs-toggle="modal" data-bs-target="#exampleModal"><img class="img-icons" src="/img/edit.png"/> Add Food Category</a>
+           </div>     
+               
+               
+ <div class="table-responsive">
+           
+<table class="table table-hover">                
+  <thead>
+    <tr>
+      <th scope="col">ID</th>
+      <th scope="col">Name</th>
+      <th scope="col">Delete</th>
+    </tr>
+  </thead>
+  <tbody>
+   
+    <tr th:each="c:${foodcategory}">
+      <th scope="row" th:text="${c.id}"></th>
+      
+      <td th:text="${c.name}"></td>
+        
+      <td><a href="#" th:href="@{'/member/restaurant/deleteFoodCategory/'+${c.id}}" class="link text-danger"><i class="fa-solid fa-trash"></i></a></td>
+              
+     
+    </tr>
+    
+  </tbody>
+</table>
+</div>
+               
+
+
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Create Category</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      
+      <div class="modal-body">
+        <form method="post" th:action="@{/member/restaurant/addfoodcategory}">
+          <label for="name" class="form-label">Category Name :</label>
+          <input required type="text" name="name" id="name"  class="form-control input-bar" placeholder="Enter Category Name"/>
+          <div class="text-center">
+             <button type="submit" class="btn-success px-3 py-2 mt-5">Create</button>
+          </div>
+        </form>
+      </div>
+ 
+    </div>
+  </div>
+</div>
+ 
+ </div>
+ </div>
+ </div>
+ 
+ 
+         <script>
+        
+        $(document).ready(()=>{
+        	 $('.item').removeClass('active');
+        	 $("#res_foodcategory").addClass("active");
+        })
+        
+        
+        </script>
+ 
+ 
+ </section>
+</body>
+</html>

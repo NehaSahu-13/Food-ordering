@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" th:replace="~{Restaurant/Base::layout(~{::section})}">
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+<section>
+
+    <div class="card wrapper">
+    
+        <div class="card-body text-center">
+        
+        
+        <div th:if="${session.message}" th:classappend="${session.message.type}" class="alert " role="alert">
+                   <p class="text-center" th:text="${session.message.content}"></p>
+                   <th:block th:text="${@sessionHelper.removeMessageFromSession()}"></th:block>
+              </div>
+        
+        
+          
+            <img th:src="@{'/img/'+${owner.image}}" alt="image" class="rest_img">
+         <div class="profile-container">
+           <div class="row mt-5">
+            <h6 class="col-5">Name</h6>
+            <h6 class="col-2">-</h6>
+            <div class="col" th:text="${owner.name}"></div>
+            </div>
+            
+            <div class="row mt-5">
+            <h6 class="col-5">Mobile</h6>
+            <h6 class="col-2">-</h6>
+            <div class="col" th:text="${owner.phonenumber}"></div>
+             </div> 
+            
+            <div class="row mt-5">
+            <h6 class="col-5">Email</h6>
+            <h6 class="col-2">-</h6>
+            <div class="col" th:text="${owner.email}"></div>
+            </div>
+           </div>
+          <button data-bs-toggle="modal" data-bs-target="#exampleModal" class="btn-success btn my-5">Edit Profile</button> 
+          <button class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#passwordModal">Change Password</button>
+    </div>
+    
+    </div>
+  
+  
+    
+        <!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Edit Your Profile</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      
+      <div class="modal-body">
+      
+        <form method="post"   enctype="multipart/form-data"  action=""
+        th:action="@{/member/restaurant/process-update-profile}" th:object="${owner}">
+        
+         <input type="hidden" th:value="${owner.id}" name="id"/>
+          <label for="name" class="form-label"> Name :</label>
+          <input required type="text" name="name" id="name"  class="form-control input-bar" th:value="${owner.name}"/>
+           <label for="phonenumber" class="form-label my-3">Phone Number :</label>
+          <input required type="number" name="phonenumber" id="phonenumber"  class="form-control input-bar" th:value="${owner.phonenumber}"/>
+          
+          <div class="custom-file my-4">
+          <label for="ProfileImage" class="form-label">Add New Image :  </label>
+         <input type="file" name="ProfileImage" id="ProfileImage"/>
+         </div>
+          
+          <div class="text-center">
+             <button type="submit" class="btn button mt-5">Update</button>
+          </div>
+        </form>
+      </div>
+ 
+    </div>
+  </div>
+</div>
+ 
+    
+  
+  
+     <!-- Modal -->
+<div class="modal fade" id="passwordModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content p-5">
+      <div class="modal-header text-center">
+        <img src="/img/edit.png" style="width:30px;height:30px"><h5 class="modal-title" id="exampleModalLabel">Change Password</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+         
+        <form method="post" action=""
+        th:action="@{/member/restaurant/change-password}" th:object="${loginuser}">
+        
+               <div class="form-group mt-2">
+                     <label for="oldPassword">Enter old password</label>            
+                    <input name="oldPassword" type="password" class="form-control input-bar" placeholder="Enter old password"/>
+                                 
+               </div>
+                                 
+                                 
+               <div class="form-group mt-3">
+                      <label for="newPassword">Enter new password</label>             
+                    <input name="newPassword" type="password" class="form-control input-bar" placeholder="Enter new password"/>
+                                 
+               </div>
+                              
+              <div class="container text-center mt-5">
+                                 
+                  <button type="submit" class="btn btn-success">Change</button>
+                  <button type="reset" class="btn btn-danger">Reset</button>
+                                 
+             </div>
+          
+        </form>
+         
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+       <script>
+        
+        $(document).ready(()=>{
+        	 $('.item').removeClass('active');
+        	 $("#res_userprofile").addClass("active");
+        })
+        
+        
+        </script>
+
+</section>
+</body>
+</html>
